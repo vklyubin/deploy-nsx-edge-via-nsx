@@ -162,18 +162,19 @@ resource "nsxt_edge_transport_node" "edge" {
   display_name  = each.key
 
   standard_host_switch {
-    
+
     host_switch_name = var.host_switches.host_switch_name
-    host_switch_profile = [data.nsxt_policy_uplink_host_switch_profile.uplink_host_switch_profile.path]
+    # host_switch_profile = [data.nsxt_policy_uplink_host_switch_profile.uplink_host_switch_profile.realized_id]
+    uplink_profile = data.nsxt_policy_uplink_host_switch_profile.uplink_host_switch_profile.realized_id
 
     ip_assignment {
       static_ip_pool = data.nsxt_policy_ip_pool.edges_ip_pool.realized_id
     }
-    
+
     dynamic "transport_zone_endpoint" {
       for_each        = toset(var.transport_zones)
       content {
-        transport_zone  = data.nsxt_policy_transport_zone.tz[transport_zone_endpoint.key].path
+        transport_zone  = data.nsxt_policy_transport_zone.tz[transport_zone_endpoint.key].realized_id
       }
     }
 
@@ -235,5 +236,8 @@ resource "nsxt_edge_transport_node" "edge" {
         value = advanced_configuration.value.param_value
       }
     }
+  }
+  lifecycle {
+    ignore_changes = all
   }
 }

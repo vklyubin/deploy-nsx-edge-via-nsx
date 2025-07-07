@@ -1,16 +1,16 @@
-################################################################
-# Provided as-is, NO VMware official support.
-#
-# Maintainer:     Vladimir Klyubin
-# Org:            VMware by Broadcom - VCF - Telco PSO
-# e-mail:         vladimir.klyubin@broadcom.com
-################################################################
+# export TF_VAR_nsxt="nsxt.vmware.com"
+# export TF_VAR_username="admin"
+# export TF_VAR_password="VMware1!VMware1!"
+
+# export TF_VAR_vsphere_fqdn="vcsa.vmware.com"
+# export TF_VAR_vsphere_user="admininstrator@vsphere.local"
+# export TF_VAR_vsphere_password="VMware1!VMware1!"
 
 edge_node_clusters = {
-  "xgr-enc-comp-b00" = { name = "xgr-enc-comp-b00", cluster_profile = "ec-profile-01", description = "XGR Block 00", edge_nodes = ["ukxgrvnc02111-nvi","ukxgrvnc02112-nvi","ukxgrvnc02113-nvi","ukxgrvnc02114-nvi"] }
+  "enc-cluster-vfdemo" = { name = "enc-cluster-vfdemo", cluster_profile = "ec-profile-01", description = "XGR Block 00", edge_nodes = ["edge1","edge2"] }
 }
 
 vsphere = {
-  datacenter_name = "UKTPHVVC02005-nvi"
-  cluster_name    = "XGR-CAAS-NTWK"
+  datacenter_name = "tps-datacenter-01"
+  cluster_name    = "tps-cluster-01"
 }

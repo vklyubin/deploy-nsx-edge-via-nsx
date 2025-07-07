@@ -38,7 +38,7 @@ pnics = {
 vsphere_settings = {
   datacenter            = "tps-datacenter-01"
   reservationpool_name  = "vklyubin"     # Leave it empty if not requirement to put Edges into dedicated pool
-  cluster_name          = "tps-cluster-01"  
+  cluster_name          = "tps-cluster-01"
   folder_name           = "vklyubin"     # Leave it empty if not required "tps-fd-mgmt"
 }
 
@@ -49,6 +49,8 @@ edges_advanced_config = [
 ]
 
 edge_nodes = {
-  "edge3" = { form_factor="SMALL", ips= ["10.209.155.151"], description = "Edge 0", esxi = "sof6-hs1-b0217.bus.broadcom.net", datastore = "tps-cluster-01-vsanDS", advanced_config = "false"
-          cpu_reservation_in_mhz = 43104, cpu_reservation_in_shares = "HIGH_PRIORITY", memory_reservation_percentage = 100 } # 43088
+  "edge1" = { form_factor="SMALL", ips= ["10.209.155.154"], description = "Edge 1", esxi = "sof6-hs1-b0217.bus.broadcom.net", datastore = "tps-cluster-01-vsanDS",
+  advanced_config = "false", cpu_reservation_in_mhz = 43104, cpu_reservation_in_shares = "HIGH_PRIORITY", memory_reservation_percentage = 100 }
+  "edge2" = { form_factor="SMALL", ips= ["10.209.155.155"], description = "Edge 1", esxi = "sof6-hs1-b0217.bus.broadcom.net", datastore = "tps-cluster-01-vsanDS",
+  advanced_config = "false", cpu_reservation_in_mhz = 43104, cpu_reservation_in_shares = "HIGH_PRIORITY", memory_reservation_percentage = 100 }
 }
